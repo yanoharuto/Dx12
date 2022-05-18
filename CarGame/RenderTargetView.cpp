@@ -1,4 +1,4 @@
-#include "RenderTargetView.h"
+﻿#include "RenderTargetView.h"
 
 RenderTargetView::RenderTargetView(int bufferCount)
 {

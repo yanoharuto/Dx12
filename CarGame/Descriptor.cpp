@@ -1,4 +1,4 @@
-#include "Descriptor.h"
+ï»¿#include "Descriptor.h"
 
 DescriptorsHeap::DescriptorsHeap()
 {
@@ -10,10 +10,10 @@ DescriptorsHeap::~DescriptorsHeap()
 
 void DescriptorsHeap::InitHeapDesc()
 {
-    mHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;//ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[
-    mHeapDesc.NodeMask = 0;//ˆê‚Â‚¾‚¯‚È‚Ì‚Å0
-    mHeapDesc.NumDescriptors = 2;//•\— ‚Ì“ñ‚Â
-    mHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;//“Á‚Éw’è‚È‚µ
+    mHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;//ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼
+    mHeapDesc.NodeMask = 0;//ä¸€ã¤ã ã‘ãªã®ã§0
+    mHeapDesc.NumDescriptors = 2;//è¡¨è£ã®äºŒã¤
+    mHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;//ç‰¹ã«æŒ‡å®šãªã—
 }
 
 void DescriptorsHeap::InitDescriptorHandle()

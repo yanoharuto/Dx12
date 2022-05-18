@@ -1,4 +1,4 @@
-#include "Commanders.h"
+ï»¿#include "Commanders.h"
 
 void Commanders::Init(ID3D12Device* pDevice)
 {
@@ -9,19 +9,19 @@ void Commanders::Init(ID3D12Device* pDevice)
         IID_PPV_ARGS(&mpCmdList));
     D3D12_COMMAND_QUEUE_DESC cmdQueueDesc = {};
 
-    //ƒ^ƒCƒ€ƒAƒEƒg‚È‚µ
+    //ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãªã—
     cmdQueueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
 
-    //ƒAƒ_ƒvƒ^[‚ðˆê‚Â‚µ‚©Žg‚í‚È‚¢‚Æ‚«‚Í0‚Å‚æ‚¢
+    //ã‚¢ãƒ€ãƒ—ã‚¿ãƒ¼ã‚’ä¸€ã¤ã—ã‹ä½¿ã‚ãªã„ã¨ãã¯0ã§ã‚ˆã„
     cmdQueueDesc.NodeMask = 0;
 
-    //ƒvƒ‰ƒCƒIƒŠƒeƒB‚Í“Á‚ÉŽw’è‚È‚µ
+    //ãƒ—ãƒ©ã‚¤ã‚ªãƒªãƒ†ã‚£ã¯ç‰¹ã«æŒ‡å®šãªã—
     cmdQueueDesc.Priority = D3D12_COMMAND_QUEUE_PRIORITY_NORMAL;
 
-    //ƒRƒ}ƒ“ƒhƒŠƒXƒg‚Æ‡‚í‚¹‚é
+    //ã‚³ãƒžãƒ³ãƒ‰ãƒªã‚¹ãƒˆã¨åˆã‚ã›ã‚‹
     cmdQueueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
 
-    //ƒLƒ…[¶¬
+    //ã‚­ãƒ¥ãƒ¼ç”Ÿæˆ
     result = pDevice->CreateCommandQueue(&cmdQueueDesc, IID_PPV_ARGS(&mpCmdQueue));
 
 }

@@ -1,4 +1,4 @@
-#include "SwapChain.h"
+ï»¿#include "SwapChain.h"
 
 void SwapChain::InitRTV()
 {
@@ -41,22 +41,22 @@ void SwapChain::Init(LONG WindowWidth, LONG WindowHeight,ID3D12Device* pDevice)
     mSwapChainDesc.SampleDesc.Quality = 0;
     mSwapChainDesc.BufferUsage = DXGI_USAGE_BACK_BUFFER;
     mSwapChainDesc.BufferCount = 2;
-    //ƒoƒbƒNƒoƒbƒtƒ@[‚ÍL‚Ñk‚İ‰Â”\
+    //ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ãƒ¼ã¯ä¼¸ã³ç¸®ã¿å¯èƒ½
     mSwapChainDesc.Scaling = DXGI_SCALING_STRETCH;
 
-    //ƒtƒŠƒbƒvŒã‚Í‘¬‚â‚©‚É”jŠü
+    //ãƒ•ãƒªãƒƒãƒ—å¾Œã¯é€Ÿã‚„ã‹ã«ç ´æ£„
     mSwapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 
-    //“Á‚Éw’è‚È‚µ
+    //ç‰¹ã«æŒ‡å®šãªã—
     mSwapChainDesc.AlphaMode = DXGI_ALPHA_MODE_UNSPECIFIED;
 
-    //ƒEƒBƒ“ƒhƒEÌƒtƒ‹ƒXƒNƒŠ[ƒ“Ø‚è‘Ö‚¦‰Â”\
+    //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦â‡”ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆå¯èƒ½
     mSwapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
     InitRTV();
     InitDescriptor(pDevice);
 }
 /// <summary>
-/// BackBuffer‚ÆView‚Ì•R‚Ã‚¯
+/// BackBufferã¨Viewã®ç´ã¥ã‘
 /// </summary>
 void SwapChain::LinkingBufferToView(ID3D12Device* pDevice)
 {  

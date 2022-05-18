@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <dxgi1_6.h>
 #include "RenderTargetView.h"
 #include "Descriptor.h"

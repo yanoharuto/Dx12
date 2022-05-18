@@ -1,4 +1,4 @@
-#include "Application.h"
+﻿#include "Application.h"
 
 #ifdef _DEBUG
 int main()

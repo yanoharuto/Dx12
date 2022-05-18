@@ -1,23 +1,23 @@
-#include "Application.h"
+ï»¿#include "Application.h"
 
-//–Ê“|‚¾‚¯‚Ç‘‚©‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢ŠÖ”
+//é¢å€’ã ã‘ã©æ›¸ã‹ãªã‘ã‚Œã°ã„ã‘ãªã„é–¢æ•°
 LRESULT WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-    //ƒEƒBƒ“ƒhƒE‚ª”jŠü‚³‚ê‚½‚çŒÄ‚Î‚ê‚é
+    //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒç ´æ£„ã•ã‚ŒãŸã‚‰å‘¼ã°ã‚Œã‚‹
     if (msg == WM_DESTROY)
     {
-        PostQuitMessage(0);//OS‚É‘Î‚µ‚Äu‚à‚¤‚±‚ÌƒAƒvƒŠ‚ÍI‚í‚év‚Æ“`‚¦‚é
+        PostQuitMessage(0);//OSã«å¯¾ã—ã¦ã€Œã‚‚ã†ã“ã®ã‚¢ãƒ—ãƒªã¯çµ‚ã‚ã‚‹ã€ã¨ä¼ãˆã‚‹
         return 0;
     }
     return DefWindowProc(hwnd, msg, wparam, lparam);
 }
 
 /// <summary>
-/// ƒRƒ“ƒ\[ƒ‹‰æ–Ê‚ÉƒtƒH[ƒ}ƒbƒg•t‚«•¶š—ñ‚ğ•\¦
+/// ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ç”»é¢ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆä»˜ãæ–‡å­—åˆ—ã‚’è¡¨ç¤º
 /// </summary>
-/// <param name="format">ƒtƒH[ƒ}ƒbƒg(%d‚Æ‚©%f‚Æ‚©‚Ì)</param>
-/// <param name="">‰Â•Ï’·ˆø”</param>
-/// <remarks> ‚±‚ÌŠÖ”‚ÍƒfƒoƒbƒO—p‚Å‚·BƒfƒoƒbƒO‚É‚µ‚©“®ì‚µ‚Ü‚¹‚ñ
+/// <param name="format">ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ(%dã¨ã‹%fã¨ã‹ã®)</param>
+/// <param name="">å¯å¤‰é•·å¼•æ•°</param>
+/// <remarks> ã“ã®é–¢æ•°ã¯ãƒ‡ãƒãƒƒã‚°ç”¨ã§ã™ã€‚ãƒ‡ãƒãƒƒã‚°æ™‚ã«ã—ã‹å‹•ä½œã—ã¾ã›ã‚“
 void Application::DebugOutputFormatString(const char* format, ...)
 {
 #ifdef _DEBUG
@@ -31,34 +31,34 @@ void Application::DebugOutputFormatString(const char* format, ...)
 void Application::InitWindowClass()
 {
     mWindowClass.cbSize = sizeof(WNDCLASSEX);
-    mWindowClass.lpfnWndProc = (WNDPROC)WindowProcedure;//ƒR[ƒ‹ƒoƒbƒNŠÖ”‚Ìw’è
-    mWindowClass.lpszClassName = TEXT("DX12Sample");//ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒNƒ‰ƒX–¼
-    mWindowClass.hInstance = GetModuleHandle(nullptr);//ƒnƒ“ƒhƒ‹‚ÌŠ“¾
+    mWindowClass.lpfnWndProc = (WNDPROC)WindowProcedure;//ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ã®æŒ‡å®š
+    mWindowClass.lpszClassName = TEXT("DX12Sample");//ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚¯ãƒ©ã‚¹å
+    mWindowClass.hInstance = GetModuleHandle(nullptr);//ãƒãƒ³ãƒ‰ãƒ«ã®æ‰€å¾—
 
-    RegisterClassEx(&mWindowClass);//ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒNƒ‰ƒXiƒEƒBƒ“ƒhƒEƒNƒ‰ƒX‚Ìw’è‚ğOS‚É“`‚¦‚éj
+    RegisterClassEx(&mWindowClass);//ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚¯ãƒ©ã‚¹ï¼ˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹ã®æŒ‡å®šã‚’OSã«ä¼ãˆã‚‹ï¼‰
 
-    RECT wrc = { 0,0,static_cast<LONG>(mWindow_Width),static_cast<LONG>(mWindow_Height) };//ƒEƒBƒ“ƒhƒEƒTƒCƒY‚ğŒˆ‚ß‚é
-    //ŠÖ”‚ğg‚Á‚ÄƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒY‚ğ•â³‚·‚é
+    RECT wrc = { 0,0,static_cast<LONG>(mWindow_Width),static_cast<LONG>(mWindow_Height) };//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºã‚’æ±ºã‚ã‚‹
+    //é–¢æ•°ã‚’ä½¿ã£ã¦ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚ºã‚’è£œæ­£ã™ã‚‹
     AdjustWindowRect(&wrc, WS_OVERLAPPEDWINDOW, false);
 
-    //ƒEƒBƒ“ƒhƒEƒIƒuƒWƒFƒNƒg‚Ì¶¬
+    //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
     mHwnd = CreateWindow(
-        mWindowClass.lpszClassName,//ƒNƒ‰ƒX–¼w’è
-        TEXT("DX12ƒeƒXƒg"),        //ƒ^ƒCƒgƒ‹ƒo[‚Ì•¶š
-        WS_OVERLAPPEDWINDOW,       //ƒ^ƒCƒgƒ‹ƒo[‚Æ‹«ŠEü‚ª‚ ‚éƒEƒBƒ“ƒhƒE
-        CW_USEDEFAULT,             //•\¦XÀ•W‚ÍOS‚É‚¨”C‚¹
-        CW_USEDEFAULT,             //•\¦YÀ•W‚ÍOS‚É‚¨”C‚¹
-        wrc.right - wrc.left,      //ƒEƒBƒ“ƒhƒE•
-        wrc.bottom - wrc.top,      //ƒEƒBƒ“ƒhƒE‚
-        nullptr,                   //eƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
-        nullptr,                   //ƒƒjƒ…[ƒnƒ“ƒhƒ‹
-        mWindowClass.hInstance,    //ŒÄ‚Ño‚µƒAƒvƒŠƒP[ƒVƒ‡ƒ“
-        nullptr);                  //’Ç‰Áƒpƒ‰ƒ[ƒ^[
+        mWindowClass.lpszClassName,//ã‚¯ãƒ©ã‚¹åæŒ‡å®š
+        TEXT("DX12ãƒ†ã‚¹ãƒˆ"),        //ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ã®æ–‡å­—
+        WS_OVERLAPPEDWINDOW,       //ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ã¨å¢ƒç•Œç·šãŒã‚ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
+        CW_USEDEFAULT,             //è¡¨ç¤ºXåº§æ¨™ã¯OSã«ãŠä»»ã›
+        CW_USEDEFAULT,             //è¡¨ç¤ºYåº§æ¨™ã¯OSã«ãŠä»»ã›
+        wrc.right - wrc.left,      //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å¹…
+        wrc.bottom - wrc.top,      //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦é«˜
+        nullptr,                   //è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
+        nullptr,                   //ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ³ãƒ‰ãƒ«
+        mWindowClass.hInstance,    //å‘¼ã³å‡ºã—ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³
+        nullptr);                  //è¿½åŠ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
 }
 
 void Application::InitFeatureLevel()
 {
-    //Direct3DƒfƒoƒCƒX‚Ì‰Šú‰»
+    //Direct3Dãƒ‡ãƒã‚¤ã‚¹ã®åˆæœŸåŒ–
     D3D_FEATURE_LEVEL featureLevel;
 
     for (auto lv : levels)
@@ -66,7 +66,7 @@ void Application::InitFeatureLevel()
         if (D3D12CreateDevice(nullptr, lv, IID_PPV_ARGS(&mpDevice)) == S_OK)
         {
             featureLevel = lv;
-            break;//¶¬‰Â”\‚Èƒo[ƒWƒ‡ƒ“‚ªŒ©‚Â‚©‚Á‚½‚çƒ‹[ƒv‚ğ‘Å‚¿Ø‚è
+            break;//ç”Ÿæˆå¯èƒ½ãªãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒè¦‹ã¤ã‹ã£ãŸã‚‰ãƒ«ãƒ¼ãƒ—ã‚’æ‰“ã¡åˆ‡ã‚Š
         }
     }
     D3D12CreateDevice(nullptr, D3D_FEATURE_LEVEL_12_1, IID_PPV_ARGS(&mpDevice));
@@ -80,10 +80,10 @@ void Application::CreateFactory()
 void Application::InitAdapter()
 {
 
-    //ƒAƒ_ƒvƒ^[‚Ì—ñ‹“—p
+    //ã‚¢ãƒ€ãƒ—ã‚¿ãƒ¼ã®åˆ—æŒ™ç”¨
     std::vector<IDXGIAdapter*> pAdapters;
 
-    //‚±‚±‚É“Á’è‚Ì–¼‘O‚ğ‚ÂƒAƒ_ƒvƒ^[ƒIƒuƒWƒFƒNƒg‚ª“ü‚é
+    //ã“ã“ã«ç‰¹å®šã®åå‰ã‚’æŒã¤ã‚¢ãƒ€ãƒ—ã‚¿ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå…¥ã‚‹
     IDXGIAdapter* tmpAdapter = nullptr;
 
     for (int i = 0; mpDxgiFactory->EnumAdapters(i, &tmpAdapter) != DXGI_ERROR_NOT_FOUND; ++i)
@@ -93,11 +93,11 @@ void Application::InitAdapter()
     for (auto adpt : pAdapters)
     {
         DXGI_ADAPTER_DESC adesc = {};
-        adpt->GetDesc(&adesc);//ƒAƒ_ƒvƒ^[‚Ìà–¾ƒIƒuƒWƒFƒNƒgŠ“¾
+        adpt->GetDesc(&adesc);//ã‚¢ãƒ€ãƒ—ã‚¿ãƒ¼ã®èª¬æ˜ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ‰€å¾—
 
         std::wstring strDesc = adesc.Description;
 
-        //’T‚µ‚½‚¢ƒAƒ_ƒvƒ^[‚Ì–¼‘O‚ğŠm”F
+        //æ¢ã—ãŸã„ã‚¢ãƒ€ãƒ—ã‚¿ãƒ¼ã®åå‰ã‚’ç¢ºèª
         if (strDesc.find(L"NVIDIA") != std::string::npos)
         {
             tmpAdapter = adpt;
@@ -151,7 +151,7 @@ Application::~Application()
 
 void Application::Run()
 {
-    //ƒEƒBƒ“ƒhƒE•\¦
+    //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦è¡¨ç¤º
     ShowWindow(mHwnd, SW_SHOW);
     MSG msg = {};
 
@@ -162,7 +162,7 @@ void Application::Run()
             TranslateMessage(&msg);
             DispatchMessageW(&msg);
         }
-        //ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ªI‚í‚é‚Æ‚«‚Émessage‚ªWM_QUIT‚É‚È‚é
+        //ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãŒçµ‚ã‚ã‚‹ã¨ãã«messageãŒWM_QUITã«ãªã‚‹
         if (msg.message == WM_QUIT)
         {
             break;
