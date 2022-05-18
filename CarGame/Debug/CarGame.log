@@ -1,0 +1,6 @@
+﻿  Application.cpp
+  SwapChain.cpp
+C:\Users\8bith\OneDrive\デスクトップ\DXlibGAME\CarGame\SwapChain.cpp(65,27): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  main.cpp
+  コードを生成中...
+  CarGame.vcxproj -> C:\Users\8bith\OneDrive\デスクトップ\DXlibGAME\CarGame\Debug\CarGame.exe

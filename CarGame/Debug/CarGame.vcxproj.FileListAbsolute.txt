@@ -1,0 +1,2 @@
+C:\Users\8bith\OneDrive\デスクトップ\DXlibGAME\CarGame\Debug\CarGame.exe
+C:\Users\8bith\OneDrive\デスクトップ\DXlibGAME\CarGame\Debug\CarGame.pdb
