@@ -3,10 +3,12 @@
 #pragma comment (lib,"d3d12.lib")
 class DescriptorsHeap
 {
-private:
-    D3D12_DESCRIPTOR_HEAP_DESC mHeapDesc = {};
+private:  
     D3D12_CPU_DESCRIPTOR_HANDLE mDescriptorHandle = {};
+
+    D3D12_DESCRIPTOR_HEAP_DESC mHeapDesc = {};
     ID3D12DescriptorHeap* mDescriptorHeaps = nullptr;
+
 public:
     DescriptorsHeap();
     ~DescriptorsHeap();

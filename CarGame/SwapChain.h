@@ -11,7 +11,7 @@ private:
     DXGI_SWAP_CHAIN_DESC1 mSwapChainDesc = {};
     
     RenderTargetView* mpRTV = nullptr;
-    DescriptorsHeap* mpRTVDescriptor = nullptr;
+    DescriptorsHeap* mpRTVDescriptorHeap = nullptr;//レンダーターゲットビュー用のDescriptorHeap
     IDXGISwapChain4* mpIDXGISwapChain = nullptr;
 
     void InitRTV();

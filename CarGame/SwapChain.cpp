@@ -7,11 +7,11 @@ void SwapChain::InitRTV()
 
 void SwapChain::InitDescriptor(ID3D12Device* pDevice)
 {
-    mpRTVDescriptor = new DescriptorsHeap();
-    mpRTVDescriptor->InitHeapDesc();
+    mpRTVDescriptorHeap = new DescriptorsHeap();
+    mpRTVDescriptorHeap->InitHeapDesc();
     pDevice->CreateDescriptorHeap(
-        mpRTVDescriptor->GetHeapDesc(),
-        IID_PPV_ARGS(mpRTVDescriptor->GetDescriptorHeap())
+        mpRTVDescriptorHeap->GetHeapDesc(),
+        IID_PPV_ARGS(mpRTVDescriptorHeap->GetDescriptorHeap())
     );
 }
 
@@ -21,8 +21,8 @@ SwapChain::SwapChain()
 
 SwapChain::~SwapChain()
 {
-    delete mpRTVDescriptor;
-    mpRTVDescriptor = nullptr;
+    delete mpRTVDescriptorHeap;
+    mpRTVDescriptorHeap = nullptr;
     delete mpRTV;
     mpRTV = nullptr;
 }
@@ -61,12 +61,14 @@ void SwapChain::Init(LONG WindowWidth, LONG WindowHeight,ID3D12Device* pDevice)
 void SwapChain::LinkingBufferToView(ID3D12Device* pDevice)
 {  
     
-    mpRTVDescriptor->InitDescriptorHandle();
+    mpRTVDescriptorHeap->InitDescriptorHandle();
+    //BackBufferの数だけ
     for (int idx = 0; idx < mSwapChainDesc.BufferCount; ++idx)
     {
         auto result = mpIDXGISwapChain->GetBuffer(idx, IID_PPV_ARGS(mpRTV->GetBackBuffer(idx)));
-        mpRTVDescriptor->SetHandlePtr( idx * pDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV));
-        pDevice->CreateRenderTargetView(*mpRTV->GetBackBuffer(idx),nullptr,mpRTVDescriptor->GetHandle());
+        
+        mpRTVDescriptorHeap->SetHandlePtr( idx * pDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV));
+        pDevice->CreateRenderTargetView(*mpRTV->GetBackBuffer(idx),nullptr,mpRTVDescriptorHeap->GetHandle());
     }   
 
 }
